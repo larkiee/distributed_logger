@@ -1,0 +1,6 @@
+tls:
+  use: true
+  crendsPath: /home/amir/projects/distributed_logger/config/tls/crends
+server:
+  ip: 127.0.0.1
+  port: 0
