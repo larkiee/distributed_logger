@@ -39,6 +39,8 @@ func NewGRPCServer(l Logger, srvOpts ...grpc.ServerOption) (*grpc.Server, func()
 			if err != nil {
 				return nil, nil, err
 			}
+		}else {
+			logger = l
 		}
 	default:
 		return nil, nil, errors.New("not recognisable logger")
@@ -97,8 +99,8 @@ func (s *grpcServer) Produce(ctx context.Context, req *api.ProduceRequest) (*api
 }
 
 func (s *grpcServer) Consume(ctx context.Context, req *api.ConsumeRequest) (*api.ConsumeResponse, error) {
-	_, span := tracer.Start(ctx, "producer")
-	defer span.End()
+	// _, span := tracer.Start(ctx, "producer")
+	// defer span.End()
 	r, err := s.Read(req.Offset)
 	if err != nil {
 		return nil, err

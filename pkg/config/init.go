@@ -32,7 +32,7 @@ func init() {
 
 	cd, _ := os.Getwd()
 
-	if viper.GetBool("tls.use") && !strings.Contains(cd, "server") {
+	if viper.GetBool("tls.use") && !strings.Contains(cd, "server") && !strings.Contains(cd, "agent") {
 		crendsPath := viper.GetString("tls.crendsPath")
 		makeCmd := exec.Command("make", "gencert")
 
